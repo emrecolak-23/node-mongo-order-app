@@ -21,7 +21,7 @@ const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
     yield (0, express_app_1.default)(app);
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
+        console.log(`Server is running on port ${PORT}!`);
     });
 });
 startServer();

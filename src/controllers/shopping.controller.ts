@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { Vandor } from "../models"
+import { Offer, Vandor } from "../models"
 import { FoodDoc } from "../models/food.model"
 
 
@@ -82,5 +82,17 @@ export const restaurantsById = async (req: Request, res: Response) => {
     if(!result) return res.status(404).json({ message: "No food available" })
 
     res.status(200).json(result)
+
+}
+
+
+export const getAvailableOffers = async (req: Request, res: Response) => {
+    
+    const pincode = req.params.pincode
+    const offers = await Offer.find({ pincode, isActive: true })
+
+    if(offers.length === 0) return res.status(404).json({ message: "No offers available" })
+
+    res.status(200).json(offers)
 
 }

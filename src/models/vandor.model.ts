@@ -14,6 +14,8 @@ interface VandorDoc extends Document {
     coverImages: string[],
     rating: number,
     foods: any
+    lat: number,
+    lng: number
 }
 
 const verdorSchema = new Schema({
@@ -37,7 +39,9 @@ const verdorSchema = new Schema({
     serviceAvailable: { type: Boolean, required: true },
     coverImages: [{ type: String, required: true }],
     rating: { type: Number, required: true },
-    foods: [{ type: Schema.Types.ObjectId, ref: "Food" }]
+    foods: [{ type: Schema.Types.ObjectId, ref: "Food" }],
+    lat: { type: Number },
+    lng: { type: Number }
 }, {
     toJSON: {
         transform: function (doc, ret) {
